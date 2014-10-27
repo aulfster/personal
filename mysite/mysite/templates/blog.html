@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>ChanderSiddarth.com | Blog</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="{% static "assets/media/styles/main.css" %}" type="text/css">
+<link rel="stylesheet" href="{% static "assets/media/styles//-slider.css" %)" type="text/css">
+<!--[if lte IE 8]><link rel="stylesheet" href="{% static "assets/media/styles/ie.css" %}" type="text/css"><![endif]-->
+<script src="{% static "assets/media/scripts/jquery-1.6.1.min.js" %)"></script>
+<script src="{% static "assets/media/scripts/jquery.nivo.slider.pack.js" %}"></script>
+<script src="{% static "assets/media/scripts/blanka.js" %}"></script>
+</head>
+<body>
+<div id="header">
+  <div class="inner cf">
+    <div id="navigation">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/mbb342">Mbb 342</a></li>
+        <li class="current-menu-item"><a href="/blog">Blog</a></li>
+        <li><a href="//ca.linkedin.com/in/csiddarth">Linkedin profile</a></li>
+      </ul>
+    </div>
+  </div>
+</div><hr>
+<div id="content" class="columns">
+  <div class="inner cf">
+    <div class="sidebar">
+    </div>
+    <hr>
+    {% if latest_post_list %}
+	<div class="main">
+		<div class="posts">
+		{% for post in latest_post_list %}
+			<div class="post">
+			<div class="post-header">
+				<h2><a href="#">{{ post.title }}</a></h2>
+				<ul class="meta cf">
+					<li>Posted in <a href="#">Category</a> on {{ post.publication_date }} by <a href="#">{{ post.authors.first_name }}</a></li>
+					<li><a href="#" class="badge">0 comments</a></li>
+				</ul>
+			</div>
+			<div class="post-body cf">
+				<div class="thumb">
+				  <div class="thumb-inner"> <img src="{% static "assets/media/images/works/thumb.png" %}" width="200" height="145" alt=""> </div>
+				</div>
+				<p class="excerpt">{{ post.post_summary }}</p>
+			</div>
+			<div class="post-footer cf">
+				<div class="back-to-top cf"> <a href="#content"><span>Back to top</span></a> </div>
+				<ul class="meta">
+					<li><a href="#" class="ui-button">Read more &raquo;</a></li>
+					<li>Tags: <a href="#">design</a>, <a href="#">inspiration</a>, <a href="#">showcase</a>, <a href="#">graphics</a></li>
+				</ul>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	{% else %}
+		<p>No posts have been published yet.</p>
+		<br>
+	{% endif %}
+      <ul class="pagination cf">
+        <li class="page next"><a href="#">Next posts</a></li>
+        <li class="page prev"><a href="#">Previous posts</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr>
+<div id="footer">
+  <div class="inner">
+    <p> <span>&copy; 2014 by <a href="#">Chander Siddarth</a></span> <span>All rights reserved.</span> <span>Website Template By <a target="_blank" href="http://highonpixels.com">High on Pixels</a></span> </p>
+  </div>
+</div>
+</body>
+</html>
